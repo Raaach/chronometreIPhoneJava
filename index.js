@@ -18,6 +18,8 @@ let time= document.querySelector('.time');
 let int= null;
 
 let isTimerStarted= false;
+let allLaps = [];
+let lapsNumber = 1;
 
 startBtn.addEventListener('click', ()=>{
     if (isTimerStarted ===false){
@@ -66,5 +68,46 @@ function checkIsResetAvailabel(){
     }else{
         lapResetBtn.innerHTML ="Lap";
     }
-
 }
+
+function displayLaps(){
+    lapsNumber++ ;
+    laps.innerHTML += ""
+    if(allLaps.length> 0){
+        allLaps.map(item =>{
+            laps.innerHTML =
+            <div class="lap">
+                <span>Lap ${item.number}</span>
+                <span>${item}</span>
+            </div>
+        })
+    }
+}
+
+lapResetBtn.addEventListener('click', () => {
+    if(isTimerStarted === false) { //Reset click
+        clearInterval(int);
+        m = 0;
+        s = 0;
+        ms = 0;
+
+        milisec = 0; 
+        sec =0 ;
+        min = 0;
+        time.innerHTML = " 00:00:00";
+
+        allLaps = [];
+        laps.innerHTML = "";
+        lapsNumber = 1;
+        
+    }else{//lap click
+        allLaps.push(
+            {
+                time: m + ":" + s + "," + ms,
+                number: lapsNumber,
+            }
+        )
+        displayLaps();
+        console.log(allLaps);
+    }
+})

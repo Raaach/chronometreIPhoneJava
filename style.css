@@ -64,3 +64,11 @@ body{
 .timerStartedMain{
     border: 5px solid #340E0B;
 }
+.lap{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 30px;
+    margin-right: 30px;
+    font-size: 60px;
+    color: white;
+}
