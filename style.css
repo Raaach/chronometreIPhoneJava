@@ -57,3 +57,10 @@ body{
     color: white;
     border: none;
 }
+.timerStarted{
+    background-color: #340E0B;
+    color: #BC3D43;
+}
+.timerStartedMain{
+    border: 5px solid #340E0B;
+}

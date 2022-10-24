@@ -1,10 +1,10 @@
 const startBtn = document.querySelector('.startBtn');
 const mainStartBtn = document.querySelector('.mainStartBtn');
 
-const lapResetBtn = document.querySelector('lapResetBtn');
-const mainLapBtn = document.querySelector('mainLapBtn');
+const lapResetBtn = document.querySelector('.lapResetBtn');
+const mainLapBtn = document.querySelector('.mainLapBtn');
 
-const laps = document.querySelector('laps');
+const laps = document.querySelector('.laps');
 
 let milisec=0;
 let sec= 0;
@@ -25,6 +25,8 @@ startBtn.addEventListener('click', ()=>{
     } else {
         clearInterval(int);
     }
+    changStartBtn();
+    checkIsResetAvailabel();
 })
 
 function displayTimer(){
@@ -47,6 +49,22 @@ function changStartBtn(){
     if(isTimerStarted === false){
         isTimerStarted = true;
 
-        startBtn.innerHTML = "Stop"
+        startBtn.innerHTML = "Stop";
+        startBtn.classList.add("timerStarted");
+        mainStartBtn.classList.add("timerStartedMain");
+    }else{
+        isTimerStarted = False;
+
+        startBtn.innerHTML = "Start";
+        startBtn.classList.remove("timerStarted");
+        mainStartBtn.classList.remove("timerStartedMain");
     }
+}
+function checkIsResetAvailabel(){
+    if(isTimerStarted === false){
+        lapResetBtn.innerHTML = "Reset";
+    }else{
+        lapResetBtn.innerHTML ="Lap";
+    }
+
 }
